@@ -1,23 +1,19 @@
-﻿
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [Header("Speed")]
-    [SerializeField] private float movingSpeed = 5f;
+    [Header("Speed")] [SerializeField] private float movingSpeed = 5f;
     private const float MinMovementSpeed = 0.1f;
     private bool _isRunning = false;
     public bool IsRunning => _isRunning;
     private float _initialMovingSpeed;
 
     [SerializeField] private TrailRenderer trailRenderer;
-    
-    [Header("Dash")]
-    [SerializeField] private int dashSpeed = 4;
+
+    [Header("Dash")] [SerializeField] private int dashSpeed = 4;
     [SerializeField] private float dashTime = 0.2f;
     [SerializeField] private float dashCoolDownTime = 0.3f;
     private bool _canDash = true;
@@ -43,16 +39,17 @@ public class PlayerMovement : MonoBehaviour
         _playerIa.Player.Move.canceled += _ => _inputVector = Vector2.zero;
         _playerIa.Player.Dash.performed += Dash;
     }
-    
+
     private void FixedUpdate()
     {
         if (_knockBack.IsGettingKnockedBack)
         {
             return;
         }
+
         HandleMovement();
     }
-    
+
     private void HandleMovement()
     {
         _rb.MovePosition(_rb.position + _inputVector * (movingSpeed * Time.fixedDeltaTime));
@@ -97,18 +94,16 @@ public class PlayerMovement : MonoBehaviour
         movingSpeed *= dashSpeed;
         trailRenderer.emitting = true;
         ActiveWeapon.Instance.gameObject.SetActive(false);
-        
-        
+
+
         yield return new WaitForSeconds(dashTime);
-        _isDashing  = false;
+        _isDashing = false;
         trailRenderer.emitting = false;
         movingSpeed = _initialMovingSpeed;
         ActiveWeapon.Instance.gameObject.SetActive(true);
-        
-        
+
+
         yield return new WaitForSeconds(dashCoolDownTime);
         _canDash = true;
-        
     }
-
 }
