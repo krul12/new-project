@@ -454,6 +454,7 @@ GameObject:
   - component: {fileID: 120875428}
   - component: {fileID: 120875423}
   - component: {fileID: 120875429}
+  - component: {fileID: 120875430}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -473,13 +474,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: effcd80593194854bbf570706a468a73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
-  movingSpeed: 5
-  maxHealth: 999
+  maxHealth: 10
   damageRecoveryTime: 0.5
-  dashSpeed: 6
-  dashTime: 0.15
-  dashCoolDownTime: 0.3
-  trailRenderer: {fileID: 1000797713}
 --- !u!4 &120875425
 Transform:
   m_ObjectHideFlags: 0
@@ -621,6 +617,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::KnockBack
   knockBackForce: 2
   knockBackMovingTimerMax: 0.3
+--- !u!114 &120875430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120875422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a10b39318b644e6c9cc6f59376408828, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
+  movingSpeed: 5
+  trailRenderer: {fileID: 1000797713}
+  dashSpeed: 4
+  dashTime: 0.2
+  dashCoolDownTime: 0.3
 --- !u!1001 &130636409
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1302,6 +1315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 598b5d122f1cfd34b8eff5d3c6bf4236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SkillVisual
+  skill: {fileID: 0}
 --- !u!95 &485891168
 Animator:
   serializedVersion: 7
@@ -2658,7 +2672,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8773d2c06992754a88f10e37ba90e03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerVisual
-  skill: {fileID: 1259928565}
 --- !u!114 &1191222550
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,7 +17,8 @@ public class PlayerVisual : MonoBehaviour
     private Animator _animator;
     private SpriteRenderer _spriteRenderer;
     private FlashBlink _flashBlink;
-    
+    private PlayerMovement _pMovement;
+
    
 
     private void Awake()
@@ -25,11 +26,11 @@ public class PlayerVisual : MonoBehaviour
         _animator = GetComponent<Animator>();
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _flashBlink = GetComponent<FlashBlink>();
-        
     }
 
     private void Start()
     {
+        _pMovement =  Player.Instance.GetComponent<PlayerMovement>();
         Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
         
         
@@ -41,8 +42,8 @@ public class PlayerVisual : MonoBehaviour
         {
             AdjustPlayerFacingDirection();
         }
-        _animator.SetBool(Running, Player.Instance.IsRunning());
-        _animator.SetBool(Dash, Player.Instance.IsDashing());
+        _animator.SetBool(Running, _pMovement.IsRunning);
+        _animator.SetBool(Dash,  _pMovement.IsDashing);
     }
     
     private void Player_OnPlayerDeath(object sender, System.EventArgs e)
