@@ -8,7 +8,7 @@ public class SkillVisual : MonoBehaviour
     private const string Cast = "Cast";
     private static readonly int Cast1 = Animator.StringToHash(Cast);
     
-    private Sprite _defaultSprite;
+    //private Sprite _defaultSprite;
     private Animator _animator;
     
     private SpriteRenderer _spriteRenderer;
