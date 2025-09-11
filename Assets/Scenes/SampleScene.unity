@@ -3640,6 +3640,10 @@ PrefabInstance:
       propertyPath: _damageAmount
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7631745674920007289, guid: 3ffa149a0c909af4b8a7a865b6131e55, type: 3}
+      propertyPath: attackCooldown
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 9129042123058618279, guid: 3ffa149a0c909af4b8a7a865b6131e55, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.52

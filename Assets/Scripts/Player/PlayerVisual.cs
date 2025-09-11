@@ -5,6 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerVisual : MonoBehaviour
 {
+    public static PlayerVisual Instance { get; private set; }
     
     private static readonly int Running = Animator.StringToHash(IsRunning);
     private static readonly int Death = Animator.StringToHash(IsDie);
@@ -17,15 +18,16 @@ public class PlayerVisual : MonoBehaviour
     
     
     private Animator _animator;
-    private SpriteRenderer _spriteRenderer;
+    public SpriteRenderer spriteRendererPlayerVisual;
     private FlashBlink _flashBlink;
     
    
 
     private void Awake()
     {
+        Instance = this;
         _animator = GetComponent<Animator>();
-        _spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRendererPlayerVisual = GetComponent<SpriteRenderer>();
         _flashBlink = GetComponent<FlashBlink>();
         
     }
@@ -58,7 +60,7 @@ public class PlayerVisual : MonoBehaviour
         Vector3 mousePos = GameInput.Instance.GetMousePosition();
         Vector3 playerPosition = Player.Instance.GetPlayerScreenPosition();
 
-        _spriteRenderer.flipX = mousePos.x < playerPosition.x;
+        spriteRendererPlayerVisual.flipX = mousePos.x < playerPosition.x;
     }
     
     private void OnDestroy()

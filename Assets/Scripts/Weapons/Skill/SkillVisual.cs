@@ -48,6 +48,7 @@ public class SkillVisual : MonoBehaviour
     
     private void OnDisable()
     {
+        skill.AttackColliderTurnOff();
         ResetSprite();
     }
     

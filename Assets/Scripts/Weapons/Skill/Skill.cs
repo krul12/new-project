@@ -6,7 +6,8 @@ using System.Collections;
 public class Skill : Weapon
 {
     [SerializeField] private float castColliderTime = 0.2f;
-    
+    private const float CastVisualTime = 0.35f;
+
     public event EventHandler OnSkillCast;
     
     private PolygonCollider2D _polygonCollider2D;
@@ -36,11 +37,15 @@ public class Skill : Weapon
 
     private IEnumerator CastRoutine()
     {
+        PlayerVisual.Instance.spriteRendererPlayerVisual.enabled = false;
         InvokeAttackEvent();  
         OnSkillCast?.Invoke(this, EventArgs.Empty);
         
         yield return new WaitForSeconds(castColliderTime);
         AttackColliderTurnOffOn();
+        
+        yield return new WaitForSeconds(CastVisualTime);
+        PlayerVisual.Instance.spriteRendererPlayerVisual.enabled = true;
     }
 
     public void OnTriggerEnter2D(Collider2D collision)
@@ -66,4 +71,10 @@ public class Skill : Weapon
         AttackColliderTurnOff();
         AttackColliderTurnOn();
     }
+
+    private void OnDisable()
+    {
+        PlayerVisual.Instance.spriteRendererPlayerVisual.enabled = true;
+    }
+    
 }
