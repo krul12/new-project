@@ -1,9 +1,11 @@
 using UnityEngine;
 
+
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class PlayerVisual : MonoBehaviour
 {
+    
     private static readonly int Running = Animator.StringToHash(IsRunning);
     private static readonly int Death = Animator.StringToHash(IsDie);
     private static readonly int Dash = Animator.StringToHash(IsDashing);
