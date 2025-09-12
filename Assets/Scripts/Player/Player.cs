@@ -1,21 +1,23 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 [SelectionBase]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerMovement))]
 public class Player : MonoBehaviour
 {
-    [Header("Health")] [SerializeField] private int maxHealth = 10;
+    [Header("Health")] [SerializeField] private float maxHealth;
     [Header("DamageCD")] [SerializeField] private float damageRecoveryTime = 0.5f;
 
+    public Image healthBar;
     public static Player Instance { get; private set; }
     private PlayerMovement _pMovement;
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnFlashBlink;
 
-    private int _currentHealth;
+    private float _currentPlayerHealth;
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
@@ -24,15 +26,17 @@ public class Player : MonoBehaviour
 
     private void Awake()
     {
+        _currentPlayerHealth = maxHealth;
+        UpdateHpBar();
         Instance = this;
         _rb = GetComponent<Rigidbody2D>();
         _mainCamera = Camera.main;
+        
     }
 
     private void Start()
     {
         _canTakeDamage = true;
-        _currentHealth = maxHealth;
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
         _pMovement = GetComponent<PlayerMovement>();
     }
@@ -54,12 +58,14 @@ public class Player : MonoBehaviour
         if (CanTakeHit())
         {
             _canTakeDamage = false;
-            _currentHealth = Mathf.Max(0, _currentHealth -= damage);
+            _currentPlayerHealth = Mathf.Max(0, _currentPlayerHealth -= damage);
+            UpdateHpBar();
             _pMovement.ApplyKnockBack(damageSource);
 
             OnFlashBlink?.Invoke(this, EventArgs.Empty);
 
             StartCoroutine(DamageRecoveryRoutine());
+            
         }
 
         DetectDeath();
@@ -78,7 +84,7 @@ public class Player : MonoBehaviour
 
     private void DetectDeath()
     {
-        if (_currentHealth <= 0 && _isAlive)
+        if (_currentPlayerHealth <= 0 && _isAlive)
         {
             GameInput.Instance.DisableInput();
             _pMovement.DisableMovement();
@@ -96,5 +102,11 @@ public class Player : MonoBehaviour
     private void OnDestroy()
     {
         GameInput.Instance.OnPlayerAttack -= GameInput_OnPlayerAttack;
+    }
+
+    private void UpdateHpBar()
+    {
+        healthBar.fillAmount = _currentPlayerHealth / maxHealth;
+        
     }
 }

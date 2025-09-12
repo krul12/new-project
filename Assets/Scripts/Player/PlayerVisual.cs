@@ -6,7 +6,6 @@ using UnityEngine;
 public class PlayerVisual : MonoBehaviour
 {
     public static PlayerVisual Instance { get; private set; }
-    private PlayerMovement _pMovement;
     
     private static readonly int Running = Animator.StringToHash(IsRunning);
     private static readonly int Death = Animator.StringToHash(IsDie);
@@ -16,11 +15,10 @@ public class PlayerVisual : MonoBehaviour
     private const string IsDie = "IsDie";
     private const string IsDashing = "IsDashing";
     
-    
-    
     private Animator _animator;
     public SpriteRenderer spriteRendererPlayerVisual;
     private FlashBlink _flashBlink;
+    private PlayerMovement _pMovement;
     
    
 
@@ -35,7 +33,7 @@ public class PlayerVisual : MonoBehaviour
 
     private void Start()
     {
-        _pMovement = GetComponent<PlayerMovement>();
+        _pMovement =  Player.Instance.GetComponent<PlayerMovement>();
         Player.Instance.OnPlayerDeath += Player_OnPlayerDeath;
         
         
@@ -47,8 +45,8 @@ public class PlayerVisual : MonoBehaviour
         {
             AdjustPlayerFacingDirection();
         }
-        _animator.SetBool(Running, _pMovement.IsRunning());
-        _animator.SetBool(Dash, _pMovement.IsDashing());
+        _animator.SetBool(Running, _pMovement.IsRunning);
+        _animator.SetBool(Dash,  _pMovement.IsDashing);
     }
     
     private void Player_OnPlayerDeath(object sender, System.EventArgs e)
