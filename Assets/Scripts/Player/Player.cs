@@ -10,14 +10,17 @@ public class Player : MonoBehaviour
 {
     [Header("Health")] [SerializeField] private float maxHealth;
     [Header("DamageCD")] [SerializeField] private float damageRecoveryTime = 0.5f;
+    [Header("Magic")] [SerializeField] private float maxMana;
 
-    public Image healthBar;
+    public Image fullHpBar;
+    public Image fullManaBar;
     public static Player Instance { get; private set; }
     private PlayerMovement _pMovement;
     public event EventHandler OnPlayerDeath;
     public event EventHandler OnFlashBlink;
 
     private float _currentPlayerHealth;
+    private float _currentPlayerMana;
     private bool _canTakeDamage;
     private bool _isAlive = true;
 
@@ -27,7 +30,9 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _currentPlayerHealth = maxHealth;
+        _currentPlayerMana = maxMana;
         UpdateHpBar();
+        UpdateManaBar();
         Instance = this;
         _rb = GetComponent<Rigidbody2D>();
         _mainCamera = Camera.main;
@@ -70,7 +75,22 @@ public class Player : MonoBehaviour
 
         DetectDeath();
     }
+    
+    public bool UseMana(float amount)
+    {
+        if (_currentPlayerMana >= amount)
+        {
+            _currentPlayerMana -= amount;
+            UpdateManaBar(); 
+            return true;
+        }
+        else
+        {
+            return false; 
+        }
+    }
 
+    
     private bool CanTakeHit()
     {
         return _canTakeDamage && _isAlive && !_pMovement.IsDashing; //dash
@@ -95,7 +115,6 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnPlayerAttack(object sender, EventArgs e)
     {
-        Debug.Log("Player Attack");
         ActiveWeapon.Instance.CurrentWeapon.Attack();
     }
 
@@ -106,7 +125,11 @@ public class Player : MonoBehaviour
 
     private void UpdateHpBar()
     {
-        healthBar.fillAmount = _currentPlayerHealth / maxHealth;
-        
+        fullHpBar.fillAmount = _currentPlayerHealth / maxHealth;
+    }
+
+    private void UpdateManaBar()
+    {
+        fullManaBar.fillAmount = _currentPlayerMana / maxMana;
     }
 }

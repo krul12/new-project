@@ -7,6 +7,7 @@ public class Skill : Weapon
 {
     [SerializeField] private float castColliderTime = 0.2f;
     private const float CastVisualTime = 0.35f;
+    
 
     public event EventHandler OnSkillCast;
     
@@ -27,6 +28,11 @@ public class Skill : Weapon
         if (!CanAttack())
         {
             return;
+        }
+        
+        if (!Player.Instance.UseMana(manaCost))
+        {
+            return; 
         }
 
         if (gameObject.activeInHierarchy)

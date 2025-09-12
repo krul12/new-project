@@ -5,6 +5,7 @@ public abstract class Weapon : MonoBehaviour
 {
     [SerializeField] protected int damageAmount;
     [SerializeField] protected float attackCooldown = 0.5f;
+    [SerializeField] protected float manaCost;
 
     protected float LastAttackTime;
     
