@@ -192,6 +192,34 @@
                     "isPartOfComposite": false
                 }
             ]
+        },
+        {
+            "name": "UI",
+            "id": "6add7afd-cb2a-4644-8a5a-dcd3db9c1a57",
+            "actions": [
+                {
+                    "name": "InventoryUI",
+                    "type": "Button",
+                    "id": "9f145a02-fc24-498a-b7cc-d56694cf3ae3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d23553fd-b43c-49eb-bf7a-c58661e9fd3d",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "InventoryUI",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
         }
     ],
     "controlSchemes": []

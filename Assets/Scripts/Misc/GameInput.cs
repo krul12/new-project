@@ -2,12 +2,12 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System;
 
-[RequireComponent(typeof(PlayerInputActions))]
 public class GameInput : MonoBehaviour
 {
     public static GameInput Instance {get; private set;}
     private PlayerInputActions _playerIa;
 
+    public event EventHandler OnInventoryToggle;
     public event EventHandler OnPlayerAttack;
     public event EventHandler<int> OnWeaponSwitch;
     public event EventHandler OnPlayerDash;
@@ -22,6 +22,7 @@ public class GameInput : MonoBehaviour
         _playerIa.Combat.SwitchWeapon2.performed += ctx => OnWeaponSwitch?.Invoke(this, 1);
         _playerIa.Combat.SwitchWeapon3.performed += ctx => OnWeaponSwitch?.Invoke(this, 2);
         _playerIa.Player.Dash.performed += PlayerDash_perfomed;
+        _playerIa.UI.InventoryUI.performed += InventoryToggle_perfomed;
     }
 
     public void DisableInput()
@@ -49,6 +50,11 @@ public class GameInput : MonoBehaviour
     private void PlayerDash_perfomed(InputAction.CallbackContext obj)
     {
         OnPlayerDash?.Invoke(this, EventArgs.Empty);
-    } 
+    }
+
+    private void InventoryToggle_perfomed(InputAction.CallbackContext obj)
+    {
+        OnInventoryToggle?.Invoke(this, EventArgs.Empty);
+    }
     
 }
