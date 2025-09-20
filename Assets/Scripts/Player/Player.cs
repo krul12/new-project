@@ -5,7 +5,7 @@ using UnityEngine;
 [SelectionBase]
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(PlayerMovement))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour //TODO Add Health for player 
 {
     [Header("Health")] [SerializeField] private int maxHealth = 10;
     [Header("DamageCD")] [SerializeField] private float damageRecoveryTime = 0.5f;

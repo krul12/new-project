@@ -1,8 +1,10 @@
 using UnityEngine;
 using System;
+using Misc;
 
 [RequireComponent(typeof(PolygonCollider2D))]
 [RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Health))]
 public class EnemyEntity : MonoBehaviour
 {
     [SerializeField] private EnemySO enemySo;
@@ -10,7 +12,8 @@ public class EnemyEntity : MonoBehaviour
     public event EventHandler OnTakeHit;
     public event EventHandler OnDeath;
     
-    private int _currentHealth;
+    // private int _currentHealth;
+    private Health _health;
     
     private PolygonCollider2D _polygonCollider2D;
     private BoxCollider2D _boxCollider2D;
@@ -21,10 +24,14 @@ public class EnemyEntity : MonoBehaviour
         _polygonCollider2D = GetComponent<PolygonCollider2D>();
         _boxCollider2D = GetComponent<BoxCollider2D>();
         _enemyAI = GetComponent<EnemyAI>();
+        _health = GetComponent<Health>();
+        _health.MaxHealth = enemySo.enemyHealth;
+        _health.OnDie += Die;
+        _health.OnHealthChanged += HealthChanged;
     }
     private void Start()
     {
-        _currentHealth = enemySo.enemyHealth;
+        // _currentHealth = enemySo.enemyHealth;
     }
     
     public void PolygonColliderTurnOff()
@@ -37,22 +44,40 @@ public class EnemyEntity : MonoBehaviour
         _polygonCollider2D.enabled = true;
     }
 
-    public void TakeDamage(int damage)
+    // public void TakeDamage(int damage)
+    // {
+    //     _currentHealth -= damage;
+    //     OnTakeHit?.Invoke(this, EventArgs.Empty);
+    //     DetectDeath();
+    // }
+    
+    public void HealthChanged(int currentHealth, int maxHealth)
     {
-        _currentHealth -= damage;
+        // _currentHealth -= damage;
         OnTakeHit?.Invoke(this, EventArgs.Empty);
-        DetectDeath();
+        // DetectDeath();
     }
 
-    private void DetectDeath()
+    
+
+    // private void DetectDeath()
+    // {
+    //     if (_currentHealth <= 0)
+    //     {
+    //         _boxCollider2D.enabled = false;
+    //         _polygonCollider2D.enabled = false;
+    //         _enemyAI.SetDeathState();
+    //         OnDeath?.Invoke(this, EventArgs.Empty);
+    //     }
+    // }
+
+    private void Die()
     {
-        if (_currentHealth <= 0)
-        {
-            _boxCollider2D.enabled = false;
-            _polygonCollider2D.enabled = false;
-            _enemyAI.SetDeathState();
-            OnDeath?.Invoke(this, EventArgs.Empty);
-        }
+        _boxCollider2D.enabled = false;
+        _polygonCollider2D.enabled = false;
+        _enemyAI.SetDeathState();
+        OnDeath?.Invoke(this, EventArgs.Empty); //TODO WHat is that
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)

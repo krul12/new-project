@@ -1,5 +1,6 @@
 using UnityEngine;
 using System;
+using Misc;
 
 
 [RequireComponent(typeof(PolygonCollider2D))]
@@ -35,9 +36,9 @@ public class Sword : Weapon
 
     public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.transform.TryGetComponent(out EnemyEntity enemyEntity))
+        if (collision.transform.TryGetComponent(out Health enemyEntity))
         {
-            enemyEntity.TakeDamage(damageAmount);
+            enemyEntity.RemoveHealth(damageAmount);
         }
     }
 
