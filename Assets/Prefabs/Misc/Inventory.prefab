@@ -203,10 +203,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8331818576344538440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 627.1364, y: 440.79968}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4277964970682768252
 MonoBehaviour:
@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 8357413818421635554}
   - component: {fileID: 6814416363542347342}
   - component: {fileID: 2640014855372206985}
+  - component: {fileID: 836942215131093437}
   m_Layer: 5
   m_Name: InventoryDescription
   m_TagString: Untagged
@@ -514,6 +515,21 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &836942215131093437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370812019906363573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b7080714b6d9f74797f4e4c21382dd9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::UIInventoryDescription
+  itemImage: {fileID: 37833086033586236}
+  title: {fileID: 5352748516360444482}
+  description: {fileID: 4766897998582330175}
 --- !u!1 &3175011779813681644
 GameObject:
   m_ObjectHideFlags: 0
@@ -1021,7 +1037,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6604586097680699301}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
@@ -1415,10 +1431,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8394501926261540985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 65, y: -65}
+  m_SizeDelta: {x: 90, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8921954020517846386
 CanvasRenderer:
@@ -1575,5 +1591,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12c2527c52593964baf355b189cc1b5a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIInventoryPage
+  itemDescription: {fileID: 836942215131093437}
   itemPrefab: {fileID: 3749806932614510182, guid: 196264978d21a0a42a3f531ffd82fd7e, type: 3}
   contentPanel: {fileID: 3974731032767762429}
+  image: {fileID: 712035800519618848, guid: 5ba6db76c8926eb4d97d68c9afd5b544, type: 3}
+  quantity: 1
+  title: Sword
+  description: Cuts thing.
