@@ -45,7 +45,13 @@ public class Player : MonoBehaviour
         GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
         _pMovement = GetComponent<PlayerMovement>();
     }
-
+    
+    /*public void AddHealth(int healthBoost)
+    {
+        int health = Mathf.RoundToInt(_currentPlayerHealth * maxHealth);
+        int val = health + healthBoost;
+        _currentPlayerHealth = (val > maxHealth ? maxHealth : val / maxHealth);
+    }*/
 
     public bool IsAlive()
     {

@@ -52,7 +52,7 @@ namespace Inventory.UI
             borderImage.enabled = true;
         }
 
-        public void OnPointerClick(PointerEventData pointerData)
+       public void OnPointerClick(PointerEventData pointerData)
         {
             if (pointerData.button == PointerEventData.InputButton.Right)
             {
@@ -66,7 +66,8 @@ namespace Inventory.UI
 
         public void OnBeginDrag(PointerEventData eventData)
         {
-            if (_empty) return;
+            if (_empty)
+                return;
             OnItemBeginDrag?.Invoke(this);
         }
 
@@ -79,7 +80,6 @@ namespace Inventory.UI
         {
             OnItemDroppedOn?.Invoke(this);
         }
-
         public void OnDrag(PointerEventData eventData)
         {
         

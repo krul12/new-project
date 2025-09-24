@@ -203,10 +203,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 8331818576344538440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 627.1364, y: 440.79968}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &4277964970682768252
 MonoBehaviour:
@@ -1592,9 +1592,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIInventoryPage
   itemDescription: {fileID: 836942215131093437}
+  mouseFollower: {fileID: 0}
   itemPrefab: {fileID: 3749806932614510182, guid: 196264978d21a0a42a3f531ffd82fd7e, type: 3}
   contentPanel: {fileID: 3974731032767762429}
-  image: {fileID: 712035800519618848, guid: 5ba6db76c8926eb4d97d68c9afd5b544, type: 3}
-  quantity: 1
-  title: Sword
-  description: Cuts thing.

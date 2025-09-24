@@ -3,8 +3,8 @@ guid: 41b97126a09809440b216f45566d7dea
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7832214784768987486
-    second: apple_0
+      213: 7293598183456022363
+    second: Apple_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: apple_0
+      name: Apple_0
       rect:
         serializedVersion: 2
-        x: 1
-        y: 0
-        width: 15
-        height: 16
+        x: 3
+        y: 3
+        width: 10
+        height: 11
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2ae284d66226e4390800000000000000
-      internalID: -7832214784768987486
+      spriteID: b5f945b97e0183560800000000000000
+      internalID: 7293598183456022363
       vertices: []
       indices: 
       edges: []
@@ -135,6 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
+      Apple_0: 7293598183456022363
       Hero_Run_0: -2472566826670189440
       Hero_Run_1: -3435544232207097774
       Hero_Run_2: -2939011289849822754
@@ -143,7 +144,6 @@ TextureImporter:
       Hero_Run_5: 5543987149395541339
       Hero_Run_6: 5921935232530533456
       Hero_Run_7: 7699825690762244204
-      apple_0: -7832214784768987486
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

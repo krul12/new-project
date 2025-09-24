@@ -19,7 +19,7 @@ namespace Inventory.UI
             OnStartDragging;
 
         public event Action<int, int>
-            OnSwapItem;
+            OnSwapItems;
     
         private int _currentlyDraggedItemIndex = -1;
 
@@ -77,27 +77,36 @@ namespace Inventory.UI
         public void Hide()
         {
             gameObject.SetActive(false);
-            ResetDraggtedItem();
+            ResetDraggedItem();
         }
 
         private void HandleShowItemActions(UIInventoryItem inventoryItemUI)
         {
-        
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+            if (index == -1)
+            {
+                return;
+            }
+            OnItemActionRequested?.Invoke(index);
         }
 
         private void HandleEndDrag(UIInventoryItem inventoryItemUI)
         {
-            ResetDraggtedItem();
+            ResetDraggedItem();
         }
 
         private void HandleSwap(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (index == -1) return;
-            OnSwapItem?.Invoke(_currentlyDraggedItemIndex, index);
+            if (index == -1)
+            {
+                return;
+            }
+            OnSwapItems?.Invoke(_currentlyDraggedItemIndex, index);
+            HandleItemSelection(inventoryItemUI);
         }
 
-        public void ResetDraggtedItem()
+        public void ResetDraggedItem()
         {
             mouseFollower.Toggle(false);
             _currentlyDraggedItemIndex = -1;
@@ -106,7 +115,8 @@ namespace Inventory.UI
         private void HandleBeginDrag(UIInventoryItem inventoryItemUI)
         {
             int index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (index == -1) return;
+            if (index == -1)
+                return;
             _currentlyDraggedItemIndex = index;
             HandleItemSelection(inventoryItemUI);
             OnStartDragging?.Invoke(index);
@@ -120,9 +130,9 @@ namespace Inventory.UI
 
         private void HandleItemSelection(UIInventoryItem inventoryItemUI)
         {
-            int Index = listOfUIItems.IndexOf(inventoryItemUI);
-            if (Index == -1) return;
-            OnDescriptionRequested?.Invoke(Index);
+            int index = listOfUIItems.IndexOf(inventoryItemUI);
+            if (index == -1) return;
+            OnDescriptionRequested?.Invoke(index);
         }
 
         public void UpdateDescription(int itemIndex, Sprite itemImage, string itemName, string description)

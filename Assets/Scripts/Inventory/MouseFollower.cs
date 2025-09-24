@@ -22,13 +22,12 @@ public class MouseFollower : MonoBehaviour
     void Update()
     {
         Vector2 mousePos = Mouse.current.position.ReadValue();
-        
-        Vector2 localPos; 
+
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             (RectTransform)canvas.transform,
             mousePos,
             canvas.worldCamera,
-            out localPos);
+            out var localPos);
         
         transform.position = canvas.transform.TransformPoint(localPos);
     }
@@ -37,7 +36,6 @@ public class MouseFollower : MonoBehaviour
 
     public void Toggle(bool val)
     {
-        Debug.Log($"Item toggled {val}");
         gameObject.SetActive(val);
     }
     

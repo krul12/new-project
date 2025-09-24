@@ -51,14 +51,23 @@ namespace Inventory
         {
             inventoryUI.InitializeInventoryUI(inventoryData.Size);
             inventoryUI.OnDescriptionRequested += HandleDescriptionRequest;
-            inventoryUI.OnSwapItem += HandleSwapItems;
+            inventoryUI.OnSwapItems += HandleSwapItems;
             inventoryUI.OnStartDragging += HandleDragging;
             inventoryUI.OnItemActionRequested += HandleItemActionRequest;
         }
 
         private void HandleItemActionRequest(int itemIndex)
         {
-            
+            InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
+            if (inventoryItem.IsEmpty)
+            {
+                return;
+            }
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if (itemAction != null)
+            {
+                itemAction.PerformAction(gameObject);
+            }
         }
 
         private void HandleDragging(int itemIndex)
@@ -72,9 +81,9 @@ namespace Inventory
             inventoryUI.CreateDraggedItem(inventoryItem.item.ItemImage, inventoryItem.quantity);
         }
 
-        private void HandleSwapItems(int itemIndex_1, int itemIndex_2)
+        private void HandleSwapItems(int itemIndex1, int itemIndex2)
         {
-            inventoryData.SwapItems(itemIndex_1, itemIndex_2);
+            inventoryData.SwapItems(itemIndex1, itemIndex2);
         }
 
         private void HandleDescriptionRequest(int itemIndex)
