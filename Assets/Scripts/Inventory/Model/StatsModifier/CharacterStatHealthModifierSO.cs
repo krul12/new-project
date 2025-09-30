@@ -8,8 +8,8 @@ public class CharacterStatHealthModifierSO : CharacterStatModifierSO
         Player player = character.GetComponent<Player>();
         if (player != null)
         {
-            Debug.Log("1");
-            /*player.AddHealth((int)val);*/
+            Debug.Log("HP+: " + val);
+            player.AddHealth(val);
         }
     }
 }

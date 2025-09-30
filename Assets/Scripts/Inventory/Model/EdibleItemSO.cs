@@ -8,9 +8,10 @@ namespace Inventory.Model
     public class EdibleItemSO : ItemSO, IDestroyableItem, IItemAction
     {
         [SerializeField] private List<ModifierData> modifiersData = new List<ModifierData>();
-        public string ActionName => "Consume";
-        public AudioClip actionSFX {get; private set;}
-        public bool PerformAction(GameObject character)
+        public string ActionName => "Eat";
+        
+        [field: SerializeField] public AudioClip actionSFX {get; private set;}
+        public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
         {
             foreach (ModifierData data in modifiersData)
             {
@@ -31,7 +32,7 @@ namespace Inventory.Model
         
         public AudioClip actionSFX { get; }
 
-        bool PerformAction(GameObject character);
+        bool PerformAction(GameObject character, List<ItemParameter> itemState);
     }
 
     [Serializable]

@@ -11,6 +11,7 @@ namespace Inventory.UI
     
         [SerializeField] private UIInventoryItem itemPrefab;
         [SerializeField] private RectTransform contentPanel;
+        [SerializeField] private ItemActionPanel actionPanel;
         List<UIInventoryItem> listOfUIItems = new List<UIInventoryItem>();
 
         public event Action<int>
@@ -72,12 +73,25 @@ namespace Inventory.UI
             {
                 item.Deselect();
             }
+            actionPanel.Toggle(false);
+        }
+
+        public void ShowItemAction(int itemIndex)
+        {
+            actionPanel.Toggle(true);
+            actionPanel.transform.position = listOfUIItems[itemIndex].transform.position;
+        }
+
+        public void AddAction(string actionName, Action performAction)
+        {
+            actionPanel.AddButton(actionName, performAction);
         }
 
         public void Hide()
         {
             gameObject.SetActive(false);
             ResetDraggedItem();
+            actionPanel.Toggle(false);
         }
 
         private void HandleShowItemActions(UIInventoryItem inventoryItemUI)

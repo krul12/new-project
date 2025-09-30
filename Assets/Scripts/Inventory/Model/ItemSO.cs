@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Inventory.Model
@@ -11,8 +13,21 @@ namespace Inventory.Model
         [field: SerializeField] public string Name { get; set; }
         [field: SerializeField] [field: TextArea] public string Description { get; set; }
         [field: SerializeField] public Sprite ItemImage { get; set; }
+        [field: SerializeField] public List<ItemParameter> DefaultParametersList {get; set;}
     
     
     }
 
+    [Serializable]
+
+    public struct ItemParameter : IEquatable<ItemParameter>
+    {
+        public float value;
+        public ItemParameterSO itemParameter;
+
+        public bool Equals(ItemParameter other)
+        {
+            return other.itemParameter == itemParameter;
+        }
+    }
 }

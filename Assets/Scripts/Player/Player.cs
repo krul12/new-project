@@ -46,12 +46,19 @@ public class Player : MonoBehaviour
         _pMovement = GetComponent<PlayerMovement>();
     }
     
-    /*public void AddHealth(int healthBoost)
+    public void AddHealth(float healthBoost)
     {
-        int health = Mathf.RoundToInt(_currentPlayerHealth * maxHealth);
-        int val = health + healthBoost;
-        _currentPlayerHealth = (val > maxHealth ? maxHealth : val / maxHealth);
-    }*/
+        _currentPlayerHealth += healthBoost;
+        _currentPlayerHealth = Mathf.Clamp(_currentPlayerHealth, 0, maxHealth);
+        UpdateHpBar();
+    }
+    
+    public void AddMana(float manaBoost)
+    {
+        _currentPlayerMana += manaBoost;
+        _currentPlayerMana = Mathf.Clamp(_currentPlayerMana, 0, maxMana);
+        UpdateManaBar();
+    }
 
     public bool IsAlive()
     {

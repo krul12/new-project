@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f5e7714cf0a5604486161d2675e12f3, type: 3}
-  m_Name: Apple
+  m_Name: HPPotion1
   m_EditorClassIdentifier: Assembly-CSharp::Inventory.Model.EdibleItemSO
   <IsStackable>k__BackingField: 1
   <MaxStackSize>k__BackingField: 99
-  <Name>k__BackingField: Apple
-  <Description>k__BackingField: Restoeres Health
-  <ItemImage>k__BackingField: {fileID: 7293598183456022363, guid: 41b97126a09809440b216f45566d7dea, type: 3}
+  <Name>k__BackingField: Health Potion 2 lvl
+  <Description>k__BackingField: Restores 50 HP
+  <ItemImage>k__BackingField: {fileID: -3890101320856551053, guid: 503689c5a408e0641b29f4cea9474319, type: 3}
   modifiersData:
   - statModifier: {fileID: 11400000, guid: c5aaba4a42e39f64ca8efaf77f95b9bf, type: 2}
-    value: 1
+    value: 50
