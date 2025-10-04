@@ -17,7 +17,5 @@ MonoBehaviour:
   <Name>k__BackingField: Sword
   <Description>k__BackingField: Cuts
   <ItemImage>k__BackingField: {fileID: 712035800519618848, guid: 5ba6db76c8926eb4d97d68c9afd5b544, type: 3}
-  <DefaultParametersList>k__BackingField:
-  - value: 100
-    itemParameter: {fileID: 11400000, guid: c7b0c831a28037740aaef147d2f690e6, type: 2}
-  <actionSFX>k__BackingField: {fileID: 8300000, guid: c5550f36d3c7e01429d7e6f029cd01c9, type: 3}
+  <DefaultParametersList>k__BackingField: []
+  <actionSFX>k__BackingField: {fileID: 0}

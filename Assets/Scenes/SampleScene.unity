@@ -650,8 +650,8 @@ GameObject:
   - component: {fileID: 120875431}
   - component: {fileID: 120875432}
   - component: {fileID: 120875433}
-  - component: {fileID: 120875434}
   - component: {fileID: 120875435}
+  - component: {fileID: 120875434}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -673,7 +673,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Player
   maxHealth: 20
   damageRecoveryTime: 0.5
-  maxMana: 100
+  maxMana: 20
   fullHpBar: {fileID: 1574646167}
   fullManaBar: {fileID: 123071854}
 --- !u!4 &120875425
@@ -853,64 +853,10 @@ MonoBehaviour:
   audioSource: {fileID: 120875434}
   initialItems:
   - quantity: 5
-    item: {fileID: 11400000, guid: 3ea1ccd723f0bdd4b8c9b930e6751fe8, type: 2}
-    itemState: []
-  - quantity: 5
     item: {fileID: 11400000, guid: 891d1160acf4d5f48a9c885a77f425cf, type: 2}
     itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: 47b31c2ad5351c24e823c7199278176f, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: 47596a036110d21478356a4895a42bb9, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: 15e39e4ebf28d5e4ba177901e6dcb7c2, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: e7693010fc9f15140bc1088facae181d, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: f30d9bd878eb4d14c81061ab671281c9, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: bb4eecb800fb0724dbcd82981b3c2543, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: 215546a38b229f3488bbeca2a1b281eb, type: 2}
-    itemState: []
-  - quantity: 5
-    item: {fileID: 11400000, guid: 60010e8a18ece1f4da02a8d17cb0f58b, type: 2}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
-    itemState: []
-  - quantity: 0
-    item: {fileID: 0}
+  - quantity: 1
+    item: {fileID: 11400000, guid: d1e61d8492f07784284e60d0d377b661, type: 2}
     itemState: []
 --- !u!114 &120875432
 MonoBehaviour:
@@ -939,9 +885,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AgentWeapon
   weapon: {fileID: 0}
   inventoryData: {fileID: 11400000, guid: 69ba5b9b017e52a48a81f138b6b6af30, type: 2}
-  parametersToModify:
-  - value: -10
-    itemParameter: {fileID: 11400000, guid: c7b0c831a28037740aaef147d2f690e6, type: 2}
+  parametersToModify: []
   itemCurrentState: []
 --- !u!82 &120875434
 AudioSource:
@@ -119858,7 +119802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Skill
   damageAmount: 20
   attackCooldown: 1
-  manaCost: 10
+  manaCost: 0
   castColliderTime: 0.2
 --- !u!60 &1259928566
 PolygonCollider2D:
