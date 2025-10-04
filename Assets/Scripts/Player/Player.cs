@@ -42,7 +42,6 @@ public class Player : MonoBehaviour
     private void Start()
     {
         _canTakeDamage = true;
-        GameInput.Instance.OnPlayerAttack += GameInput_OnPlayerAttack;
         _pMovement = GetComponent<PlayerMovement>();
     }
     
@@ -125,16 +124,7 @@ public class Player : MonoBehaviour
             _isAlive = false;
         }
     }
-
-    private void GameInput_OnPlayerAttack(object sender, EventArgs e)
-    {
-        ActiveWeapon.Instance.CurrentWeapon.Attack();
-    }
-
-    private void OnDestroy()
-    {
-        GameInput.Instance.OnPlayerAttack -= GameInput_OnPlayerAttack;
-    }
+    
 
     private void UpdateHpBar()
     {

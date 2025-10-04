@@ -93,14 +93,14 @@ public class PlayerMovement : MonoBehaviour
         _canDash = false;
         movingSpeed *= dashSpeed;
         trailRenderer.emitting = true;
-        ActiveWeapon.Instance.gameObject.SetActive(false);
+        
 
 
         yield return new WaitForSeconds(dashTime);
         _isDashing = false;
         trailRenderer.emitting = false;
         movingSpeed = _initialMovingSpeed;
-        ActiveWeapon.Instance.gameObject.SetActive(true);
+        
 
 
         yield return new WaitForSeconds(dashCoolDownTime);

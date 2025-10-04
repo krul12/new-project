@@ -26,7 +26,6 @@ public class GameInput : MonoBehaviour
         _playerIa.UI.InventoryUI.performed += InventoryToggle_perfomed;
         _playerIa.Player.HotbarScroll.performed += ctx =>
         {
-            Debug.Log("Input");
             float scroll = ctx.ReadValue<float>();
             OnHotbarScroll?.Invoke(this, scroll);
         };

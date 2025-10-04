@@ -8,12 +8,6 @@ public class DestructiblePlant : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.GetComponent<Weapon>())
-        {
-            OnDestructibleTakeDamage?.Invoke(this, EventArgs.Empty);
-            Destroy(gameObject);
-            
-            NavMeshSurfaceManagement.Instance.RebakeNavmeshSurface();
-        }
+        
     }
 }
