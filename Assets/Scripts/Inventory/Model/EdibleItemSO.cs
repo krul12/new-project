@@ -13,10 +13,9 @@ namespace Inventory.Model
         [field: SerializeField] public AudioClip actionSFX {get; private set;}
         public bool PerformAction(GameObject character, List<ItemParameter> itemState = null)
         {
-            foreach (ModifierData data in modifiersData)
-            {
+            foreach (var data in modifiersData)
                 data.statModifier.AffectCharacter(character, data.value);
-            }
+
             return true;
         }
     }

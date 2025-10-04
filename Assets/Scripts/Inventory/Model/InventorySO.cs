@@ -10,6 +10,8 @@ namespace Inventory.Model
     {
         [SerializeField] private List<InventoryItem> inventoryItems; 
         [field: SerializeField] public int Size { get; private set; } = 24; 
+        [field: SerializeField] public int HotbarSize { get; private set; } = 8;
+        public List<int> HotbarSlots { get; private set; }
 
         
         public event Action<Dictionary<int, InventoryItem>> 
@@ -19,11 +21,15 @@ namespace Inventory.Model
         
         public void Initialize() 
         {
-            inventoryItems = new List<InventoryItem>(); 
-            for (int i = 0; i < Size; i++) 
-            {
-                inventoryItems.Add(InventoryItem.GetEmptyItem()); 
-            }
+            inventoryItems = new List<InventoryItem>();
+            for (int i = 0; i < Size; i++)
+                inventoryItems.Add(InventoryItem.GetEmptyItem());
+            
+            HotbarSlots = new List<int>();
+            for (int i = 0; i < HotbarSize; i++)
+                HotbarSlots.Add(i);
+
+            InformAboutChange();
         }
 
         public int AddItem(ItemSO item, int quantity, List<ItemParameter> itemState = null) 

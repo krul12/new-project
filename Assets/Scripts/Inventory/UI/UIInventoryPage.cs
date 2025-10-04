@@ -53,6 +53,7 @@ namespace Inventory.UI
                 listOfUIItems[itemIndex].SetData(itemImage, itemQuantity);
             }
         }
+        
     
         public void Show()
         {
@@ -102,6 +103,7 @@ namespace Inventory.UI
                 return;
             }
             OnItemActionRequested?.Invoke(index);
+            
         }
 
         private void HandleEndDrag(UIInventoryItem inventoryItemUI)

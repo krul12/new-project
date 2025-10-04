@@ -11,6 +11,7 @@ public class GameInput : MonoBehaviour
     public event EventHandler OnPlayerAttack;
     public event EventHandler<int> OnWeaponSwitch;
     public event EventHandler OnPlayerDash;
+    public event EventHandler<float> OnHotbarScroll;
     
     private void Awake()
     {
@@ -23,6 +24,12 @@ public class GameInput : MonoBehaviour
         _playerIa.Combat.SwitchWeapon3.performed += ctx => OnWeaponSwitch?.Invoke(this, 2);
         _playerIa.Player.Dash.performed += PlayerDash_perfomed;
         _playerIa.UI.InventoryUI.performed += InventoryToggle_perfomed;
+        _playerIa.Player.HotbarScroll.performed += ctx =>
+        {
+            Debug.Log("Input");
+            float scroll = ctx.ReadValue<float>();
+            OnHotbarScroll?.Invoke(this, scroll);
+        };
     }
 
     public void DisableInput()

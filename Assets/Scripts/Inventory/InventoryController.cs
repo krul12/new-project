@@ -11,6 +11,7 @@ namespace Inventory
     {
         [SerializeField] private UIInventoryPage inventoryUI;
         [SerializeField] private InventorySO inventoryData;
+        [SerializeField] private UIHotbar hotbar;
         private bool _isInventoryOpen = false;
         
         [SerializeField] private AudioClip dropClip;
@@ -26,6 +27,7 @@ namespace Inventory
 
             PrepareUI();
             PrepareInventoryData();
+            hotbar.InitializeHotbar(inventoryData);
         }
 
         private void PrepareInventoryData()
